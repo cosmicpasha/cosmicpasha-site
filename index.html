@@ -48,13 +48,13 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 <div style="width: 160px; height: 1px; background: linear-gradient(90deg, #c9a25c, rgba(201, 162, 92, 0))"></div>
 <p style="margin: 0; max-width: 520px; font-size: 17px; color: #bdb5a0">Buy cheap on one world, sell dear on another, and stay one jump ahead of your creditors. Six star systems, eight volatile commodities, one goal: a million akçe and a triumphant return to Earth.</p>
 
-<form id="notify" action="#" method="post" style="margin-top: 8px; display: flex; flex-direction: column; gap: 10px; max-width: 520px">
+<form id="notify" action="https://buttondown.com/api/emails/embed-subscribe/cosmicpasha" method="post" target="_blank" style="margin-top: 8px; display: flex; flex-direction: column; gap: 10px; max-width: 520px">
 <label for="email" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #ece4d0">BE FIRST ABOARD AT LAUNCH</label>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
-<input id="email" type="email" placeholder="you@example.com" autocomplete="email" style="flex: 1 1 240px; min-height: 52px; padding: 0 18px; background: #161d33; border: 1px solid #3a3f52; border-radius: 2px; color: #ece4d0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; box-sizing: border-box">
+<input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email" style="flex: 1 1 240px; min-height: 52px; padding: 0 18px; background: #161d33; border: 1px solid #3a3f52; border-radius: 2px; color: #ece4d0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; box-sizing: border-box">
 <button type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0 28px; background: #c9a25c; border: 0; border-radius: 2px; color: #0a0e1a; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.12em; cursor: pointer">NOTIFY ME</button>
 </div>
-<p style="margin: 0; font-size: 13px; color: #a39c88">Launch news only. Unsubscribe anytime.</p>
+<input type="hidden" name="embed" value="1"><p style="margin: 0; font-size: 13px; color: #a39c88">Launch news only. Unsubscribe anytime.</p>
 </form>
 </div>
 
