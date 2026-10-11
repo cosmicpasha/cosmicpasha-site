@@ -46,7 +46,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 <h1 style="margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 700; font-size: clamp(52px, 7.5vw, 104px); line-height: 0.95; letter-spacing: 0.02em; color: #c9a25c; text-shadow: 0 0 40px rgba(201, 162, 92, 0.25)">COSMIC<br>PASHA</h1>
 <p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; color: #ece4d0">An Empire of Stars &amp; Silver</p>
 <div style="width: 160px; height: 1px; background: linear-gradient(90deg, #c9a25c, rgba(201, 162, 92, 0))"></div>
-<p style="margin: 0; max-width: 520px; font-size: 17px; color: #bdb5a0">Buy cheap on one world, sell dear on another, and stay one jump ahead of your creditors. Six star systems, eight volatile commodities, one goal: a million akçe and a triumphant return to Earth.</p>
+<p style="margin: 0; max-width: 520px; font-size: 17px; color: #bdb5a0">Buy cheap on one world, sell dear on another, and stay one jump ahead of your creditors. You start in our Solar System. Near worlds unlock with advanced space-travel tech, and Far worlds open once an Einstein–Rosen bridge is safely established. Each layer is riskier to travel. Eight volatile commodities, one goal: a million akçe and a triumphant return to Earth.</p>
 
 <form id="notify" action="https://buttondown.com/api/emails/embed-subscribe/cosmicpasha" method="post" target="_blank" style="margin-top: 8px; display: flex; flex-direction: column; gap: 10px; max-width: 520px">
 <label for="email" style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #ece4d0">BE FIRST ABOARD AT LAUNCH</label>
@@ -60,31 +60,43 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 
 <!-- Star map ornament -->
 <div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
-<svg viewBox="-110 -30 740 580" style="width: 100%; max-width: 560px; height: auto" role="img" aria-label="Star map of the six trading worlds: Earth, Mars Colony, Europa Station, Proxima b, Kepler-442b and Wolf 1061c">
-<circle cx="260" cy="260" r="200" fill="none" stroke="#8a6d38" stroke-width="1"></circle>
-<circle cx="260" cy="260" r="236" fill="none" stroke="#8a6d38" stroke-width="0.6" stroke-dasharray="2 6"></circle>
-<circle cx="260" cy="260" r="128" fill="none" stroke="#8a6d38" stroke-width="0.6" stroke-dasharray="1 5"></circle>
-<line x1="260" y1="60" x2="433.2" y2="360" stroke="#c9a25c" stroke-width="1" stroke-dasharray="4 6" opacity="0.55"></line>
-<line x1="433.2" y1="160" x2="260" y2="460" stroke="#c9a25c" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"></line>
-<line x1="86.8" y1="360" x2="260" y2="60" stroke="#c9a25c" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"></line>
-<line x1="86.8" y1="160" x2="433.2" y2="160" stroke="#c9a25c" stroke-width="1" stroke-dasharray="4 6" opacity="0.3"></line>
-<rect x="200" y="200" width="120" height="120" fill="#161d33" fill-opacity="0.6" stroke="#c9a25c" stroke-width="1.4"></rect>
-<rect x="200" y="200" width="120" height="120" fill="none" stroke="#c9a25c" stroke-width="1.4" transform="rotate(45 260 260)"></rect>
-<circle cx="260" cy="260" r="34" fill="none" stroke="#c9a25c" stroke-width="1"></circle>
-<circle cx="260" cy="260" r="7" fill="#c9a25c"></circle>
-<g font-family="Cinzel, Georgia, serif" font-size="17" font-weight="600" fill="#ece4d0" letter-spacing="1.5">
-<circle cx="260" cy="60" r="9" fill="#c9a25c"></circle>
-<text x="260" y="30" text-anchor="middle">EARTH</text>
-<circle cx="433.2" cy="160" r="7" fill="#a15a3a"></circle>
-<text x="452" y="166">MARS COLONY</text>
-<circle cx="433.2" cy="360" r="7" fill="#ece4d0"></circle>
-<text x="452" y="366">EUROPA STATION</text>
-<circle cx="260" cy="460" r="7" fill="#4caf7d"></circle>
-<text x="260" y="500" text-anchor="middle">PROXIMA B</text>
-<circle cx="86.8" cy="360" r="7" fill="#8a6d38"></circle>
-<text x="68" y="366" text-anchor="end">KEPLER-442B</text>
-<circle cx="86.8" cy="160" r="7" fill="#c9564f"></circle>
-<text x="68" y="166" text-anchor="end">WOLF 1061C</text>
+<svg viewBox="0 0 600 600" style="width: 100%; max-width: 560px; height: auto" role="img" aria-label="Map of the three travel layers. The Solar System, with Earth, Mars, Europa and Titan, is open. The Near and Far layers are locked.">
+<!-- Far layer (locked) -->
+<circle cx="300" cy="300" r="294" fill="#000000" stroke="#8a6d38" stroke-width="1"></circle>
+<!-- Near layer (locked) -->
+<circle cx="300" cy="300" r="222" fill="#000000" stroke="#8a6d38" stroke-width="1"></circle>
+<!-- Solar System layer (open) -->
+<circle cx="300" cy="300" r="150" fill="#0a0e1a"></circle>
+<circle cx="300" cy="300" r="150" fill="#161d33" fill-opacity="0.6" stroke="#c9a25c" stroke-width="1.4"></circle>
+<circle cx="300" cy="300" r="70" fill="none" stroke="#8a6d38" stroke-width="0.6" stroke-dasharray="2 6"></circle>
+<rect x="284" y="284" width="32" height="32" fill="none" stroke="#c9a25c" stroke-width="1.4"></rect>
+<rect x="284" y="284" width="32" height="32" fill="none" stroke="#c9a25c" stroke-width="1.4" transform="rotate(45 300 300)"></rect>
+<circle cx="300" cy="300" r="5" fill="#c9a25c"></circle>
+<g font-family="Cinzel, Georgia, serif" font-size="15" font-weight="600" fill="#ece4d0" letter-spacing="1">
+<circle cx="300" cy="230" r="9" fill="#c9a25c"></circle>
+<text x="300" y="212" text-anchor="middle">EARTH</text>
+<circle cx="370" cy="300" r="7" fill="#a15a3a"></circle>
+<text x="383" y="305">MARS</text>
+<circle cx="300" cy="370" r="7" fill="#ece4d0"></circle>
+<text x="300" y="395" text-anchor="middle">EUROPA</text>
+<circle cx="230" cy="300" r="7" fill="#8a6d38"></circle>
+<text x="217" y="305" text-anchor="end">TITAN</text>
+</g>
+<text x="300" y="430" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="2.5" fill="#c9a25c">SOLAR SYSTEM</text>
+<!-- Locks and layer names -->
+<g fill="#ffffff" font-family="Cinzel, Georgia, serif" font-size="15" font-weight="600" letter-spacing="1.5">
+<g transform="translate(300 106)">
+<path d="M-9 -2 V-9 a9 9 0 0 1 18 0 V-2" fill="none" stroke="#ffffff" stroke-width="4"></path>
+<rect x="-14" y="-2" width="28" height="20" rx="3"></rect>
+<circle cx="0" cy="8" r="3" fill="#000000"></circle>
+</g>
+<text x="300" y="141" text-anchor="middle">NEAR</text>
+<g transform="translate(300 34)">
+<path d="M-9 -2 V-9 a9 9 0 0 1 18 0 V-2" fill="none" stroke="#ffffff" stroke-width="4"></path>
+<rect x="-14" y="-2" width="28" height="20" rx="3"></rect>
+<circle cx="0" cy="8" r="3" fill="#000000"></circle>
+</g>
+<text x="300" y="69" text-anchor="middle">FAR</text>
 </g>
 </svg>
 </div>
@@ -196,7 +208,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 <div style="padding: 32px 28px; border: 1px solid #262d45; border-radius: 4px; background: rgba(22, 29, 51, 0.5); display: flex; flex-direction: column; gap: 14px">
 <div style="font-family: Cinzel, Georgia, serif; font-size: 32px; color: #c9a25c">II</div>
 <h3 style="margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: 0.04em">Jump Systems</h3>
-<p style="margin: 0; color: #bdb5a0; font-size: 15px">Plot a course across six worlds, from Mars Colony to the far edge of Wolf 1061c.</p>
+<p style="margin: 0; color: #bdb5a0; font-size: 15px">Plot a course through the Solar System, then on to Near and Far worlds as each layer unlocks. The farther you go, the riskier the trip.</p>
 </div>
 <div style="padding: 32px 28px; border: 1px solid #262d45; border-radius: 4px; background: rgba(22, 29, 51, 0.5); display: flex; flex-direction: column; gap: 14px">
 <div style="font-family: Cinzel, Georgia, serif; font-size: 32px; color: #c9a25c">III</div>
@@ -263,7 +275,7 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 </div>
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #8f8a7a">
 <span>© 2026 Cosmic Pasha</span>
-<span><a href="mailto:cosmicpasha@outlook.com" style="color:#a39c88">cosmicpasha@outlook.com</a></span>
+<span><a href="mailto:burak@cosmicpasha.com" style="color:#a39c88">burak@cosmicpasha.com</a></span>
 </div>
 </footer>
 
