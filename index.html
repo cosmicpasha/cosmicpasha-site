@@ -51,6 +51,9 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 .social .label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){.social a{transition:none}}
+.sol-h{display:block;width:100%;max-width:1000px;height:auto}
+.sol-v{display:none;width:100%;max-width:380px;height:auto}
+@media (max-width:760px){.sol-h{display:none}.sol-v{display:block}}
 </style>
 <style>html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
 </head>
@@ -238,44 +241,223 @@ input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #ece4
 </div>
 </div>
 
-<!-- Travel layers map -->
+<!-- Sol system map -->
 <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 24px">
-<svg viewBox="0 0 600 600" style="width: 100%; max-width: 480px; height: auto" role="img" aria-label="Map of the three travel layers. The Solar System, with Earth, Mars, Europa and Titan, is open. The Near and Far layers are locked.">
-<circle cx="300" cy="300" r="294" fill="#000000" stroke="#8a6d38" stroke-width="1"></circle>
-<circle cx="300" cy="300" r="222" fill="#000000" stroke="#8a6d38" stroke-width="1"></circle>
-<circle cx="300" cy="300" r="150" fill="#0a0e1a"></circle>
-<circle cx="300" cy="300" r="150" fill="#161d33" fill-opacity="0.6" stroke="#c9a25c" stroke-width="1.4"></circle>
-<circle cx="300" cy="300" r="70" fill="none" stroke="#8a6d38" stroke-width="0.6" stroke-dasharray="2 6"></circle>
-<rect x="284" y="284" width="32" height="32" fill="none" stroke="#c9a25c" stroke-width="1.4"></rect>
-<rect x="284" y="284" width="32" height="32" fill="none" stroke="#c9a25c" stroke-width="1.4" transform="rotate(45 300 300)"></rect>
-<circle cx="300" cy="300" r="5" fill="#c9a25c"></circle>
-<g font-family="Cinzel, Georgia, serif" font-size="15" font-weight="600" fill="#ece4d0" letter-spacing="1">
-<circle cx="300" cy="230" r="9" fill="#c9a25c"></circle>
-<text x="300" y="212" text-anchor="middle">EARTH</text>
-<circle cx="370" cy="300" r="7" fill="#a15a3a"></circle>
-<text x="383" y="305">MARS</text>
-<circle cx="300" cy="370" r="7" fill="#ece4d0"></circle>
-<text x="300" y="395" text-anchor="middle">EUROPA</text>
-<circle cx="230" cy="300" r="7" fill="#8a6d38"></circle>
-<text x="217" y="305" text-anchor="end">TITAN</text>
+<svg width="0" height="0" style="position: absolute; overflow: hidden" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="sol-limb" cx="0.5" cy="0.5" r="0.5"><stop offset="0.62" stop-color="#000" stop-opacity="0"></stop><stop offset="1" stop-color="#000" stop-opacity="0.38"></stop></radialGradient>
+<linearGradient id="sol-shL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fffaeb" stop-opacity="0.2"></stop><stop offset="0.35" stop-color="#fffaeb" stop-opacity="0"></stop><stop offset="0.56" stop-color="#060912" stop-opacity="0.12"></stop><stop offset="0.8" stop-color="#060912" stop-opacity="0.72"></stop><stop offset="1" stop-color="#060912" stop-opacity="0.92"></stop></linearGradient>
+<linearGradient id="sol-shT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaeb" stop-opacity="0.2"></stop><stop offset="0.35" stop-color="#fffaeb" stop-opacity="0"></stop><stop offset="0.56" stop-color="#060912" stop-opacity="0.12"></stop><stop offset="0.8" stop-color="#060912" stop-opacity="0.72"></stop><stop offset="1" stop-color="#060912" stop-opacity="0.92"></stop></linearGradient>
+<radialGradient id="sol-sun" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fff6dc"></stop><stop offset="0.4" stop-color="#f6d27a"></stop><stop offset="0.8" stop-color="#d9a24a"></stop><stop offset="1" stop-color="#c9a25c"></stop></radialGradient>
+<radialGradient id="sol-glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0.5" stop-color="#f6d27a" stop-opacity="0.3"></stop><stop offset="0.75" stop-color="#c9a25c" stop-opacity="0.1"></stop><stop offset="1" stop-color="#c9a25c" stop-opacity="0"></stop></radialGradient>
+<radialGradient id="sol-gEarth" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#5b9fd8"></stop><stop offset="0.6" stop-color="#3b82c4"></stop><stop offset="1" stop-color="#1d4f86"></stop></radialGradient>
+<radialGradient id="sol-gMoon" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#c6c8cb"></stop><stop offset="0.6" stop-color="#a7a9ad"></stop><stop offset="1" stop-color="#7f8185"></stop></radialGradient>
+<radialGradient id="sol-gMars" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#d9925b"></stop><stop offset="0.55" stop-color="#b5502f"></stop><stop offset="1" stop-color="#7a3420"></stop></radialGradient>
+<radialGradient id="sol-gCeres" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#a39684"></stop><stop offset="0.6" stop-color="#8a7d6d"></stop><stop offset="1" stop-color="#5e5447"></stop></radialGradient>
+<radialGradient id="sol-gIo" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#f0e28e"></stop><stop offset="0.6" stop-color="#e3cf5a"></stop><stop offset="1" stop-color="#b8992f"></stop></radialGradient>
+<radialGradient id="sol-gEuropa" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#f6f9fb"></stop><stop offset="0.6" stop-color="#e8eef2"></stop><stop offset="1" stop-color="#c3cad0"></stop></radialGradient>
+<radialGradient id="sol-gTitan" cx="0.45" cy="0.45" r="0.6"><stop offset="0" stop-color="#dba057"></stop><stop offset="0.65" stop-color="#c98a3e"></stop><stop offset="0.9" stop-color="#9c6a32"></stop><stop offset="1" stop-color="#3b3324"></stop></radialGradient>
+<radialGradient id="sol-gJup" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#e6d8bc"></stop><stop offset="1" stop-color="#b59b78"></stop></radialGradient>
+<radialGradient id="sol-gSat" cx="0.4" cy="0.4" r="0.65"><stop offset="0" stop-color="#ece0b8"></stop><stop offset="1" stop-color="#bfa874"></stop></radialGradient>
+<clipPath id="sol-cEarth"><circle r="30"></circle></clipPath>
+<clipPath id="sol-cMoon"><circle r="13.5"></circle></clipPath>
+<clipPath id="sol-cMars"><circle r="22"></circle></clipPath>
+<clipPath id="sol-cCeres"><circle r="8"></circle></clipPath>
+<clipPath id="sol-cIo"><circle r="14"></circle></clipPath>
+<clipPath id="sol-cEuropa"><circle r="12.5"></circle></clipPath>
+<clipPath id="sol-cJup"><circle r="30"></circle></clipPath>
+<clipPath id="sol-cSat"><circle r="22"></circle></clipPath>
+<clipPath id="sol-cFront"><rect x="-60" y="0" width="120" height="30"></rect></clipPath>
+
+<g id="sol-earth">
+<circle r="30" fill="url(#sol-gEarth)"></circle>
+<g clip-path="url(#sol-cEarth)">
+<path d="M-18 -14 q6 -8 14 -4 q4 6 -2 10 q-4 8 -10 4 q-6 -4 -2 -10z" fill="#5d7f3f"></path>
+<path d="M4 2 q8 -4 12 2 q2 8 -4 14 q-6 2 -8 -4 q-4 -6 0 -12z" fill="#7d6f45"></path>
+<path d="M12 -20 q6 0 8 4 q-2 4 -6 3 q-4 -2 -2 -7z" fill="#5d7f3f"></path>
+<path d="M-26 8 q4 -2 6 2 q0 6 -4 8 q-4 -2 -2 -10z" fill="#6b7a40"></path>
+<g fill="none" stroke="#f4f7fa" stroke-linecap="round" stroke-opacity="0.85">
+<path d="M-28 -4 q10 -6 20 -2 t18 -4" stroke-width="2.2"></path>
+<path d="M-14 12 q8 4 16 0 q6 -3 12 1" stroke-width="1.8"></path>
+<path d="M-8 -24 q8 2 14 -2" stroke-width="1.6"></path>
+<path d="M8 -9 q4 -4 8 0 q2 4 -3 5" stroke-width="1.6"></path>
+<path d="M-20 23 q8 2 14 -2" stroke-width="1.4"></path>
 </g>
-<text x="300" y="430" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="2.5" fill="#c9a25c">SOLAR SYSTEM</text>
-<g fill="#ffffff" font-family="Cinzel, Georgia, serif" font-size="15" font-weight="600" letter-spacing="1.5">
-<g transform="translate(300 106)">
-<path d="M-9 -2 V-9 a9 9 0 0 1 18 0 V-2" fill="none" stroke="#ffffff" stroke-width="4"></path>
-<rect x="-14" y="-2" width="28" height="20" rx="3"></rect>
-<circle cx="0" cy="8" r="3" fill="#000000"></circle>
+<circle r="30" fill="url(#sol-limb)"></circle>
 </g>
-<text x="300" y="141" text-anchor="middle">NEAR</text>
-<g transform="translate(300 34)">
-<path d="M-9 -2 V-9 a9 9 0 0 1 18 0 V-2" fill="none" stroke="#ffffff" stroke-width="4"></path>
-<rect x="-14" y="-2" width="28" height="20" rx="3"></rect>
-<circle cx="0" cy="8" r="3" fill="#000000"></circle>
+<circle r="30.6" fill="none" stroke="#8cbef0" stroke-opacity="0.35" stroke-width="1.2"></circle>
 </g>
-<text x="300" y="69" text-anchor="middle">FAR</text>
+
+<g id="sol-moon">
+<circle r="13.5" fill="url(#sol-gMoon)"></circle>
+<g clip-path="url(#sol-cMoon)">
+<g fill="#4a4c50" fill-opacity="0.55">
+<ellipse cx="-4" cy="-3" rx="4" ry="3"></ellipse>
+<ellipse cx="3" cy="-5" rx="3" ry="2.2"></ellipse>
+<ellipse cx="2" cy="3" rx="3.5" ry="2.5"></ellipse>
+<ellipse cx="-5" cy="5" rx="2" ry="1.6"></ellipse>
+</g>
+<g fill="none" stroke="#8e9094" stroke-width="0.6"><circle cx="6" cy="7" r="1"></circle><circle cx="-1" cy="9" r="0.8"></circle><circle cx="8" cy="-1" r="0.7"></circle></g>
+<circle r="13.5" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-mars">
+<circle r="22" fill="url(#sol-gMars)"></circle>
+<g clip-path="url(#sol-cMars)">
+<ellipse cx="-6" cy="6" rx="10" ry="5" fill="#d9925b" fill-opacity="0.45"></ellipse>
+<ellipse cx="9" cy="10" rx="6" ry="3" fill="#d9925b" fill-opacity="0.35"></ellipse>
+<path d="M2 -6 q6 -2 8 3 q1 5 -4 7 q-3 -4 -4 -10z" fill="#6e2c1a" fill-opacity="0.5"></path>
+<ellipse cx="-9" cy="-5" rx="6" ry="2.5" fill="#7a3420" fill-opacity="0.45"></ellipse>
+<path d="M-14 3 q8 -2 18 1" fill="none" stroke="#6e2c1a" stroke-opacity="0.55" stroke-width="1.2" stroke-linecap="round"></path>
+<ellipse cx="0" cy="-20.5" rx="8" ry="3.6" fill="#f6f1ea" fill-opacity="0.95"></ellipse>
+<circle r="22" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-ceres">
+<circle r="8" fill="url(#sol-gCeres)"></circle>
+<g clip-path="url(#sol-cCeres)">
+<g fill="#6f6456" fill-opacity="0.6" stroke="#ab9e8b" stroke-opacity="0.45" stroke-width="0.4">
+<circle cx="-2.5" cy="-2.5" r="2"></circle><circle cx="3.5" cy="2.5" r="1.5"></circle><circle cx="-3" cy="4" r="1.2"></circle><circle cx="4" cy="-4" r="0.9"></circle>
+</g>
+<circle cx="0.8" cy="-0.6" r="0.9" fill="#e9e4d8"></circle>
+<circle cx="1.9" cy="0" r="0.45" fill="#e9e4d8"></circle>
+<circle r="8" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-io">
+<circle r="14" fill="url(#sol-gIo)"></circle>
+<g clip-path="url(#sol-cIo)">
+<ellipse cx="-4" cy="-3" rx="2.2" ry="1.8" fill="#c4473a" fill-opacity="0.85"></ellipse>
+<circle cx="-4" cy="-3" r="0.8" fill="#1e140e"></circle>
+<ellipse cx="4" cy="2" rx="3" ry="2.2" fill="#d9822b" fill-opacity="0.7"></ellipse>
+<circle cx="5" cy="1.6" r="0.9" fill="#2a1a10"></circle>
+<circle cx="-2" cy="6" r="1.4" fill="#c4473a" fill-opacity="0.7"></circle>
+<circle cx="6" cy="-6" r="1" fill="#2a1a10" fill-opacity="0.85"></circle>
+<ellipse cx="-7" cy="3" rx="1.6" ry="1.2" fill="#e0a040"></ellipse>
+<circle cx="1" cy="-7" r="2.6" fill="none" stroke="#c4473a" stroke-opacity="0.6" stroke-width="0.7"></circle>
+<circle cx="1" cy="-7" r="0.6" fill="#1e140e"></circle>
+<circle r="14" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-europa">
+<circle r="12.5" fill="url(#sol-gEuropa)"></circle>
+<g clip-path="url(#sol-cEuropa)">
+<ellipse cx="3" cy="4" rx="4" ry="2.5" fill="#b98e6a" fill-opacity="0.25"></ellipse>
+<g fill="none" stroke="#8b5a3c" stroke-width="0.6" stroke-opacity="0.65">
+<path d="M-13 -4 q8 2 13 -2 t13 3"></path>
+<path d="M-10 6 q6 -6 12 -4 t10 -6"></path>
+<path d="M-4 -13 q2 8 -2 13 t2 12"></path>
+<path d="M3 -12 q-3 9 4 14"></path>
+<path d="M-12 -9 L10 9" stroke-opacity="0.4"></path>
+</g>
+<circle r="12.5" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-titan">
+<circle r="18.4" fill="none" stroke="#e3ad62" stroke-opacity="0.18" stroke-width="3"></circle>
+<circle r="17" fill="url(#sol-gTitan)"></circle>
+</g>
+
+<g id="sol-jupiter">
+<circle r="30" fill="url(#sol-gJup)"></circle>
+<g clip-path="url(#sol-cJup)">
+<rect x="-30" y="-19" width="60" height="4" fill="#b08a62"></rect>
+<rect x="-30" y="-10" width="60" height="5" fill="#a9805a"></rect>
+<rect x="-30" y="2" width="60" height="3" fill="#c2a27c"></rect>
+<rect x="-30" y="8" width="60" height="5" fill="#a07850"></rect>
+<rect x="-30" y="18" width="60" height="4" fill="#b89670"></rect>
+<ellipse cx="8" cy="10.5" rx="4" ry="2.4" fill="#b5603e"></ellipse>
+<circle r="30" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+
+<g id="sol-sat-back" transform="rotate(-16)" fill="none" stroke="#d6c08f">
+<ellipse rx="46" ry="11" stroke-width="5" stroke-opacity="0.9"></ellipse>
+<ellipse rx="36" ry="8.5" stroke-width="1.5"></ellipse>
+</g>
+<g id="sol-sat-body" transform="rotate(-16)">
+<circle r="22" fill="url(#sol-gSat)"></circle>
+<g clip-path="url(#sol-cSat)">
+<rect x="-22" y="-12" width="44" height="3" fill="#c9b07c"></rect>
+<rect x="-22" y="-3" width="44" height="4" fill="#b99f6c"></rect>
+<rect x="-22" y="8" width="44" height="3" fill="#c9b07c"></rect>
+<circle r="22" fill="url(#sol-limb)"></circle>
+</g>
+</g>
+<g id="sol-sat-front" transform="rotate(-16)" fill="none" stroke="#d6c08f" clip-path="url(#sol-cFront)">
+<ellipse rx="46" ry="11" stroke-width="5" stroke-opacity="0.9"></ellipse>
+<ellipse rx="36" ry="8.5" stroke-width="1.5"></ellipse>
+</g>
+</defs>
+</svg>
+
+<!-- Horizontal layout (wider screens): Sun on the left -->
+<svg class="sol-h" viewBox="0 0 1000 220" role="img" aria-label="Map of the Sol system. Outward from the Sun: Earth with its Moon, Mars, Ceres, Io and Europa beside Jupiter, and Titan beside Saturn.">
+<circle cx="82" cy="120" r="80" fill="url(#sol-glow)"></circle>
+<circle cx="82" cy="120" r="40" fill="url(#sol-sun)"></circle>
+<g fill="none" stroke="#c9a25c" stroke-opacity="0.12">
+<circle cx="82" cy="120" r="113"></circle><circle cx="82" cy="120" r="263"></circle><circle cx="82" cy="120" r="383"></circle><circle cx="82" cy="120" r="548"></circle><circle cx="82" cy="120" r="788"></circle>
+</g>
+<line x1="125" y1="120" x2="990" y2="120" stroke="#8a6d38" stroke-opacity="0.6"></line>
+<g fill="none" stroke="#c9a25c" stroke-opacity="0.22" stroke-dasharray="2 4">
+<circle cx="195" cy="120" r="50"></circle><circle cx="630" cy="120" r="50"></circle><circle cx="630" cy="120" r="72"></circle><circle cx="870" cy="120" r="68"></circle>
+</g>
+<g transform="translate(630 120)" opacity="0.32"><use href="#sol-jupiter"></use><circle r="30" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(870 120)" opacity="0.32"><use href="#sol-sat-back"></use><use href="#sol-sat-body"></use><circle r="22" fill="url(#sol-shL)"></circle><use href="#sol-sat-front"></use></g>
+<g transform="translate(195 120)"><use href="#sol-earth"></use><circle r="31" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(236 91)"><use href="#sol-moon"></use><circle r="13.5" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(345 120)"><use href="#sol-mars"></use><circle r="22" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(465 120)"><use href="#sol-ceres"></use><circle r="8" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(668 88)"><use href="#sol-io"></use><circle r="14" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(689 161)"><use href="#sol-europa"></use><circle r="12.5" fill="url(#sol-shL)"></circle></g>
+<g transform="translate(928 156)"><use href="#sol-titan"></use><circle r="17" fill="url(#sol-shL)"></circle></g>
+<g font-family="Cinzel, Georgia, serif" font-size="17" font-weight="600" fill="#ece4d0" letter-spacing="1.5" text-anchor="middle">
+<text x="195" y="178">EARTH</text>
+<text x="236" y="66">MOON</text>
+<text x="345" y="178">MARS</text>
+<text x="465" y="178">CERES</text>
+<text x="668" y="62">IO</text>
+<text x="689" y="200">EUROPA</text>
+<text x="928" y="200">TITAN</text>
 </g>
 </svg>
-<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #a39c88; text-align: center">Three layers of space. Two still locked.</p>
+
+<!-- Vertical layout (phones): Sun at the top -->
+<svg class="sol-v" viewBox="0 -60 360 920" role="img" aria-label="Map of the Sol system. Outward from the Sun: Earth with its Moon, Mars, Ceres, Io and Europa beside Jupiter, and Titan beside Saturn.">
+<circle cx="170" cy="40" r="92" fill="url(#sol-glow)"></circle>
+<circle cx="170" cy="40" r="42" fill="url(#sol-sun)"></circle>
+<g fill="none" stroke="#c9a25c" stroke-opacity="0.12">
+<circle cx="170" cy="40" r="150"></circle><circle cx="170" cy="40" r="280"></circle><circle cx="170" cy="40" r="390"></circle><circle cx="170" cy="40" r="540"></circle><circle cx="170" cy="40" r="730"></circle>
+</g>
+<line x1="170" y1="87" x2="170" y2="845" stroke="#8a6d38" stroke-opacity="0.6"></line>
+<g fill="none" stroke="#c9a25c" stroke-opacity="0.22" stroke-dasharray="2 4">
+<circle cx="170" cy="190" r="50"></circle><circle cx="170" cy="580" r="50"></circle><circle cx="170" cy="580" r="72"></circle><circle cx="170" cy="770" r="68"></circle>
+</g>
+<g transform="translate(170 580)" opacity="0.32"><use href="#sol-jupiter"></use><circle r="30" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(170 770)" opacity="0.32"><use href="#sol-sat-back"></use><use href="#sol-sat-body"></use><circle r="22" fill="url(#sol-shT)"></circle><use href="#sol-sat-front"></use></g>
+<g transform="translate(170 190)"><use href="#sol-earth"></use><circle r="31" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(211 219)"><use href="#sol-moon"></use><circle r="13.5" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(170 320)"><use href="#sol-mars"></use><circle r="22" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(170 430)"><use href="#sol-ceres"></use><circle r="8" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(211 551)"><use href="#sol-io"></use><circle r="14" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(229 621)"><use href="#sol-europa"></use><circle r="12.5" fill="url(#sol-shT)"></circle></g>
+<g transform="translate(228 806)"><use href="#sol-titan"></use><circle r="17" fill="url(#sol-shT)"></circle></g>
+<g font-family="Cinzel, Georgia, serif" font-size="17" font-weight="600" fill="#ece4d0" letter-spacing="1.5">
+<text x="126" y="196" text-anchor="end">EARTH</text>
+<text x="233" y="224">MOON</text>
+<text x="136" y="326" text-anchor="end">MARS</text>
+<text x="150" y="436" text-anchor="end">CERES</text>
+<text x="233" y="557">IO</text>
+<text x="250" y="627">EUROPA</text>
+<text x="253" y="812">TITAN</text>
+</g>
+</svg>
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: #a39c88; text-align: center">Seven ports of the Sol system. The stars come later.</p>
 </div>
 </section>
 
