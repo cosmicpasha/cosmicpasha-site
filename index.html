@@ -222,8 +222,15 @@ main{position:relative;z-index:1;overflow-x:clip}
 /* ==========================================================================
    Screenshots
    ========================================================================== */
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;justify-items:center;align-items:start}
-.phone{width:100%;max-width:280px;aspect-ratio:9/19.5;border-radius:30px;overflow:hidden;background:#0d1224;border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.55)}
+/* Three equal columns side by side (they shrink together on half-width windows); one column on phones */
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,280px));justify-content:center;align-items:start;gap:56px clamp(16px,3vw,56px)}
+@media (max-width:600px){.shots{grid-template-columns:minmax(0,280px)}}
+.shot{margin:0;width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2vw,22px)}
+.shot figcaption{display:flex;flex-direction:column;gap:6px;text-align:center}
+.shot h3{margin:0;font:600 clamp(17px,2.2vw,22px)/1.2 var(--font-display);letter-spacing:.06em;color:var(--gold)}
+.shot p{margin:0;font-size:clamp(14px,1.6vw,16px);color:var(--text-2)}
+@media (max-width:600px){.shot h3{font-size:22px}.shot p{font-size:16px}}
+.phone{width:100%;max-width:280px;aspect-ratio:960/1728;border-radius:30px;overflow:hidden;background:#0d1224;border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.55)}
 .phone img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* ==========================================================================
@@ -301,10 +308,10 @@ main{position:relative;z-index:1;overflow-x:clip}
     /* Screenshots: zoom in everywhere, drift at different speeds on wide screens */
     .phone{animation:zoom-in linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
     @media (min-width:720px){
-      .phone{animation:zoom-in linear both,drift linear both;animation-timeline:view(),view();animation-range:entry 0% entry 100%,cover 0% cover 100%}
-      .phone:nth-child(1){--drift:24px}
-      .phone:nth-child(2){--drift:72px}
-      .phone:nth-child(3){--drift:44px}
+      .shot{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+      .shot:nth-child(1){--drift:24px}
+      .shot:nth-child(2){--drift:72px}
+      .shot:nth-child(3){--drift:44px}
     }
   }
 }
@@ -668,16 +675,28 @@ main{position:relative;z-index:1;overflow-x:clip}
 <section class="section" style="padding-top:0">
 <div class="wrap">
 <div class="section-head">
-<h2 class="h-display h-xl">From the bridge</h2>
+<h2 class="h-display h-xl">A first look</h2>
+<p class="sub">Buy cheap, cross the Sol system, sell dear.</p>
 </div>
 <div class="shots">
+<figure class="shot">
 <div class="phone">
-<img src="assets/img/earth_market_screen.webp" width="900" height="1595" loading="lazy" alt="In-game screenshot of the Earth Market: a scrolling list of commodities with prices in akçe — Water Ice at 20, Helium-3 at 120, Gold at 600, Plutonium-238 at 4,500, Scorpion Venom at 10,000, Californium-252 at 15,000 — framed by an ornate blue-and-gold border, with Buy and Sell buttons at the bottom.">
+<img src="assets/img/earth_market_screen.webp?v=2" width="960" height="1728" loading="lazy" alt="In-game Earth Market screen: a status bar showing 1,000 akçe, 0 of 20 cargo and day 1 of 365, above an ornate blue-and-gold list of commodities with prices — Water Ice 20, Helium-3 120, Gold 600, Plutonium-238 4,500, Scorpion Venom 10,000 and Californium-252 15,000 — with Buy and Sell buttons at the bottom.">
 </div>
+<figcaption><h3>Trade</h3><p>Prices change with every jump.</p></figcaption>
+</figure>
+<figure class="shot">
 <div class="phone">
-<img src="assets/img/solar_system.webp" width="1200" height="1200" loading="lazy" alt="Illustrated map of the Solar System inside an ornate blue-and-gold frame: a blazing Sun at the top with golden orbit rings, and the Moon, Earth, Mars, Jupiter and Saturn lined up beneath it, with smaller moons and an asteroid alongside.">
+<img src="assets/img/solar_map_screen.webp" width="960" height="1728" loading="lazy" alt="In-game map of the Solar System inside an ornate gold frame: a blazing Sun at the top with golden orbit lines sweeping down past Earth and the Moon, Mars, a small grey moon, Jupiter flanked by two of its moons, and Saturn with its rings and a moon at the bottom.">
 </div>
-<div class="phone"><img src="assets/img/gameplay_port.png" width="1179" height="2556" loading="lazy" style="object-position:top" alt="Port of Earth screen from the game, showing three options: a Rüşvet (bribe) for ₳ 500 that prevents customs inspections on arrival at Earth for 30 days, Shields, where you can buy a shield for ₳ 300 and currently hold 0 of 3, and a Cargo hold upgrade from 20 to 50 units for ₳ 10,000, plus a Back button."></div>
+<figcaption><h3>Travel</h3><p>Seven ports across the Sol system.</p></figcaption>
+</figure>
+<figure class="shot">
+<div class="phone">
+<img src="assets/img/port_of_earth_screen.webp?v=3" width="960" height="1728" loading="lazy" alt="In-game Port of Earth screen with three ornate gold-framed options: Rüşvet (a bribe) — pay 500 for no customs inspections at Earth for 30 days; Shields — escape pirates with no days lost, buy one for 300, holding 0 of 3; and Cargo Hold — upgrade from 20 to 50 units for 10,000 — plus a Back button.">
+</div>
+<figcaption><h3>Spend</h3><p>Bribes, shields and a bigger hold.</p></figcaption>
+</figure>
 </div>
 </div>
 </section>
